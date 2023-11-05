@@ -19,25 +19,30 @@
         })();
     </script>
 
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </head>
 <body>
 
-    <div class="container">
-        <h1>Coming Soon! - UsWarriorWomen</h1>
-        <p>To join the women wellness jouney, subscribe to get notified.</p>
-        <br>
+
+
+    <div class="container glass">
+        <h1>UsWarriorWomen - Coming Soon!</h1>
+        <p>Subscribe to join the women's wellness jouney, and to be the first to get notified about our launch.</p>
+
         <form id="myForm">
 
             <input type="text" name="name" id="name" autocomplete="off" placeholder="Enter Your Name">
             <input type="email" name="email" id="email" autocomplete="off" placeholder="Enter Your Email Id" required>
             <br><br>
+            <div id="error-message" style="color: red;"></div>
             <button type="submit" id="subscribe-button" >Notify Me!</button>
         </form>
     </div>
 
+
     <script src="index.js"></script>
+
 
 
 </body>

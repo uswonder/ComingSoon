@@ -1,28 +1,3 @@
-// function sendEmail(e){
-//
-//   e.preventDefault();
-//   console.log("hello");
-//   var params = {
-//     name: document.getElementById("name").value,
-//     email: document.getElementById("email").value,
-//   };
-//
-//    const serviceId = "service_uds3mxe";
-//    const templateId = "template_qtem33o";
-//    console.log(document.getElementById("name").value);
-//
-//    emailjs.sendForm(serviceId, templateId, '#myForm')
-//    .then((res) =>{
-//      console.log("successfully");
-//      console.log(res);
-//      document.getElementById("name").value =  "";
-//      document.getElementById("email").value =  "";
-//      console.log(res);
-//      alert("Your message sent successfully");
-//    }
-//    .catch((err) => console.log(err));
-//)
-// }
 
 document.getElementById("myForm")
 .addEventListener("submit", function(event) {
@@ -30,18 +5,43 @@ document.getElementById("myForm")
 
   const serviceId = "service_uds3mxe";
   const templateId = "template_qtem33o";
+  const errorMessage = document.getElementById("error-message");
+  const emailInput = document.getElementById("email");
 
+  const email = emailInput.value;
+
+  if (isValidEmail(email)) {
   // send the email here
   emailjs.sendForm(serviceId, templateId, this).then(
     (response) => {
+      swal("Thank You!", "You're excited to notify you about the launch!", "success");
+
       document.getElementById("name").value =  "";
       document.getElementById("email").value =  "";
+
+
+      errorMessage.textContent = '';
       console.log("SUCCESS!", response.status, response.text);
-      alert("SUCCESS!");
+      console.log(email);
+      // alert("SUCCESS! Thank you for subscribing!");
+
     },
     (error)=> {
               console.log("FAILED...", error);
-              alert("FAILED...", error);
+              swal("Oops!", "Something went wrong.", "error");
+
             }
   );
+  } else{
+
+      errorMessage.textContent = 'Invalid email format. Please enter a valid email.';
+  }
+
+  function isValidEmail(email) {
+    // Regular expression for email validation
+    // const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+
+    const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    return emailRegex.test(email);
+  }
 });

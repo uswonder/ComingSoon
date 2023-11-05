@@ -5,26 +5,43 @@
  padding: 0;
  box-sizing: border-box;
  font-family: "Poppins", sans-serif;
- background-color: #A9A9F5;
+ /* background-color: #A9A9F5; */
+}
+body {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 10s linear infinite;
+  height: 100vh;
 }
 
-body{
-  background-color: linear-gradient(135deg, #71b7e6, #9b59b6);
-}
+  @keyframes gradient {
+  	0% {
+  		background-position: 0% 50%;
+  	}
+  	50% {
+  		background-position: 100% 50%;
+  	}
+  	100% {
+  		background-position: 0% 50%;
+  	}
+  }
 
 .container{
-  display: flex;
-  row-gap: 15px;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  width: 100%;
-  overflow: hidden;
-
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 50px;
 }
-.div-container {
-    text-align: center;
-    margin-top: 100px;
+
+.glass{
+  background: rgba(255, 255, 255, 0.23);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 h1 {
@@ -41,7 +58,7 @@ input {
     padding: 10px;
     width: 250px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 5px;
     font-size: 16px;
     .input-box {
       display: flex;
@@ -53,31 +70,15 @@ input {
       column-gap: 20px;
     }
 }
-/*
-input[type="text"] {
-    padding: 10px;
-    width: 250px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    .input-box {
-  display: flex;
-  align-items: center;
-  height: 40px;
-  max-width: 360px;
-  width: 100%;
-  margin-top: 20px;
-  column-gap: 20px;
-}
-} */
+
 
 input-box input {
   width: 100%;
   padding: 0 15px;
-  color: #ffff;
+  color:
 }
 input::placeholder {
-  color: #fff;
+  color: grey;
 }
 .input-box button {
   cursor: pointer;
@@ -90,18 +91,7 @@ input::placeholder {
   background-color: #fff;
   color: #0d6a81;
 }
-/*
-.input input,
-.input button {
-//height: 100%;
-  outline: none;
-  border: none;
-  //border: 1px solid #fff;
-  border-radius: 4px;
-  background-color: rgba(255, 255, 255, 0.2);
-  font-weight: 400;
-}
-*/
+
 button {
     padding: 10px 20px;
     background-color: #2B60DE;
@@ -117,8 +107,40 @@ button:hover {
     background-color: #0050a5;
 }
 
-@media screen and (max-width: 300px) {
-  .container header {
-    font-size: 50px;
+
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 20px; /* Adjust the padding for smaller screens */
+  }
+  body {
+   height: 80vh; /* Adjust the percentage as needed for smaller screens */
+ }
+}
+
+/* Styles for screens between 769px and 992px (e.g., tablets) */
+@media screen and (min-width: 769px) and (max-width: 992px) {
+  .container {
+    padding: 30px; /* Adjust the padding for medium-sized screens */
+  }
+}
+
+/* Styles for screens larger than 992px (e.g., desktops) */
+@media screen and (min-width: 993px) {
+  .container {
+    padding: 50px; /* Adjust the padding for larger screens */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  body {
+    height: 70vh; /* Adjust the percentage for even smaller screens */
+  }
+  h1 {
+      font-size: 30px;
+      margin-bottom: 10px;
+  }
+  .container {
+    padding: 8px; /* Adjust the padding for medium-sized screens */
   }
 }
